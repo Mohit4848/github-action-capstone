@@ -12,10 +12,10 @@ jobs:
 
     steps:
       - name: Pull image
-        run: docker pull mohit4848/myapp:latest
+        run: docker pull mohit4488/myapp:latest
 
       - name: Run container
-        run: docker run -d -p 5000:5000 --name myapp mohit4848/myapp:latest
+        run: docker run -d -p 5000:5000 --name myapp mohit4488/myapp:latest
 
       - name: Wait
         run: sleep 5
