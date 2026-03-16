@@ -6,6 +6,9 @@ on:
       - main
     types: [opened, synchronize]
 
+permissions:
+  contents: read
+
 jobs:
 
   build-test:
@@ -21,3 +24,13 @@ jobs:
     steps:
       - name: Print summary
         run: echo "PR checks passed for branch ${{ github.head_ref }}"
+
+  vulnerability-check:
+    needs: build-test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Dependencies for Vulnerabilities
+        uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: critical
